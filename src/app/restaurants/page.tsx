@@ -1,66 +1,48 @@
+"use client";
+import React, { useEffect } from "react";
 import RestaurantCard from "@/components/RestaurantCard";
-import { RestaurantCardProps } from "@/types/restaurant";
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import React from "react";
+import { useInView } from "react-intersection-observer";
+import { useInfiniteRestaurants } from "@/hooks/useInfiniteRestaurants";
 
-const restaurants: RestaurantCardProps[] = [
-  {
-    id: "1",
-    name: "Red Dragon",
-    imageUrl: "/restaurants/1.png",
-    description: "Authentic Asian cuisine and fresh sushi rolls.",
-    cuisineType: "Asian",
-    isOpen: true,
-  },
-  {
-    id: "2",
-    name: "La Piccola Italia",
-    imageUrl: "/restaurants/2.png",
-    description: "Classic Italian pasta and pizzas.",
-    cuisineType: "Italian",
-    isOpen: false,
-  },
-  {
-    id: "3",
-    name: "Red Dragon",
-    imageUrl: "/restaurants/3.png",
-    description: "Authentic Asian cuisine and fresh sushi rolls.",
-    cuisineType: "Asian",
-    isOpen: true,
-  },
-  {
-    id: "4",
-    name: "Red Dragon",
-    imageUrl: "/restaurants/4.png",
-    description: "Authentic Asian cuisine and fresh sushi rolls.",
-    cuisineType: "Asian",
-    isOpen: true,
-  },
-  {
-    id: "5",
-    name: "Red Dragon",
-    imageUrl: "/restaurants/1.png",
-    description: "Authentic Asian cuisine and fresh sushi rolls.",
-    cuisineType: "Asian",
-    isOpen: true,
-  },
-];
+const Page = () => {
+  const { ref, inView } = useInView();
 
-const page = () => {
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
+    useInfiniteRestaurants();
+
+  useEffect(() => {
+    if (inView && hasNextPage) fetchNextPage();
+  }, [inView, hasNextPage, fetchNextPage]);
+
+  const restaurants = data?.pages.flatMap((page) => page.data) ?? [];
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-background">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {restaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.id} {...restaurant} />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-background px-4 py-8">
+      <div className="grid grid-cols-1 w-full max-w-5xl gap-10">
+        {restaurants.map((restaurant, index) => (
+          <RestaurantCard key={restaurant.id} {...restaurant} index={index} />
         ))}
       </div>
 
-      <Link href="/menu">
-        <Button color="primary">menu</Button>
+      <div ref={ref} className="mt-8">
+        {isFetchingNextPage ? (
+          <p className="text-sm text-gray-500">Loading more restaurants...</p>
+        ) : hasNextPage ? (
+          <Button onPress={() => fetchNextPage()} color="primary">
+            Load More
+          </Button>
+        ) : (
+          <p className="text-sm text-gray-400">No more restaurants to load.</p>
+        )}
+      </div>
+
+      <Link href="/menu" className="mt-4">
+        <Button color="primary">Menu</Button>
       </Link>
     </div>
   );
 };
 
-export default page;
+export default Page;

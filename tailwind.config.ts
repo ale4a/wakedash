@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-const {heroui} = require("@heroui/react");
+const { heroui } = require("@heroui/react");
 
 const config: Config = {
   content: [
@@ -8,10 +8,16 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    "hover:border-interactive-1",
+    "hover:border-interactive-2",
+    "hover:border-interactive-3",
+    "hover:border-interactive-4",
+  ],
   theme: {
     extend: {
       colors: {
-        background: "#131318",
+        background: "#16161B",
         primary: "#3E73C4",
         secondary: "#B0B3C3",
         success: "#7FE0A2",
@@ -19,11 +25,11 @@ const config: Config = {
         danger: "#F76C6C",
         "text-primary": "#FFFFFF",
         "text-secondary": "#A1A1AA",
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gray-text": "#3D3D3D",
+        "interactive-1": "#0BA1F9",
+        "interactive-2": "#F9CD2F",
+        "interactive-3": "#FB832D",
+        "interactive-4": "#F7F7F7",
       },
     },
   },
