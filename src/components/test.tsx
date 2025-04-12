@@ -1,12 +1,12 @@
 import { Button } from "@heroui/react";
 import React from "react";
 
-const Home = () => {
+const TestComponent = () => {
   return (
     <div>
-      <Button color="primary">Button</Button>
+      <Button>Test</Button>
     </div>
   );
 };
 
-export default Home;
+export default TestComponent;
