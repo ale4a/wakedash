@@ -5,7 +5,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen bg-background">
       <Image src="/logo.svg" alt="logo" width={400} height={400} />
       <Link href="/restaurants">
         <Button color="primary">Get Started</Button>

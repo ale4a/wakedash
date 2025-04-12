@@ -22,7 +22,13 @@ const Page = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-background px-4 py-8">
       <div className="grid grid-cols-1 w-full max-w-5xl gap-10">
         {restaurants.map((restaurant, index) => (
-          <RestaurantCard key={restaurant.id} {...restaurant} index={index} />
+          <Link
+            key={restaurant.id}
+            href={`/restaurants/${restaurant.id}`}
+            className="block w-full  p-2"
+          >
+            <RestaurantCard {...restaurant} index={index} />
+          </Link>
         ))}
       </div>
 

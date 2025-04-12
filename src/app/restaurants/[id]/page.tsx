@@ -4,7 +4,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen bg-background">
       <Link href="/success">
         <Button color="primary">success</Button>
       </Link>

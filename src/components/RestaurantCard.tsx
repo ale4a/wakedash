@@ -6,7 +6,6 @@ import { RestaurantCardProps } from "@/types/restaurant";
 import { CiClock2 } from "react-icons/ci";
 import { LuMapPin } from "react-icons/lu";
 import Image from "next/image";
-import { Chip } from "@heroui/react";
 
 const RestaurantCard = ({
   id,
@@ -36,9 +35,9 @@ const RestaurantCard = ({
     <Card
       isPressable
       radius="none"
-      className={`group hover:shadow-lg bg-background text-white border-gray-text border-solid border-4 transition-colors duration-300 ${hoverClass}`}
+      className={`w-full group hover:shadow-lg bg-background text-white border-gray-text border-solid border-4 transition-colors duration-300 ${hoverClass}`}
     >
-      <div className="relative h-48 w-full bg-red-500">
+      <div className="relative h-48 w-full">
         <Image
           src={imageUrl || "/placeholder.svg"}
           alt={name}
@@ -50,15 +49,9 @@ const RestaurantCard = ({
       <CardHeader className="pb-2 ">
         <div className="flex items-center justify-between w-full">
           <h3 className="text-xl font-bold ">{name}</h3>
-
-          {/* {isOpen ? (
-            <Chip color="success">Open</Chip>
-          ) : (
-            <Chip color="danger">Close</Chip>
-          )} */}
           {cuisineType && (
             <div
-              className={`text-sm items-center justify-center flex h-full z-20 bg-interactive-4 rounded-full text-black px-2 py-1`}
+              className={`text-sm text-white items-center justify-center flex h-full z-20 bg-primary rounded-full px-4 py-1`}
             >
               {cuisineType}
             </div>
