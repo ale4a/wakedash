@@ -16,6 +16,17 @@
   }
 }
 
+html, body {
+  @apply bg-background text-text-primary;
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+* {
+  @apply box-border;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
