@@ -46,9 +46,9 @@ const RestaurantCard = ({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
-      <CardHeader className="pb-2 ">
+      <CardHeader>
         <div className="flex items-center justify-between w-full">
-          <h3 className="text-xl font-bold ">{name}</h3>
+          <h3 className="text-3xl font-bold ">{name}</h3>
           {cuisineType && (
             <div
               className={`text-sm text-white items-center justify-center flex h-full z-20 bg-primary rounded-full px-4 py-1`}
@@ -58,7 +58,7 @@ const RestaurantCard = ({
           )}
         </div>
       </CardHeader>
-      <CardBody>
+      <CardBody className="pt-0 pb-4 px-4">
         {description && (
           <p className="text-sm text-muted-foreground text-text-secondary">
             {description}

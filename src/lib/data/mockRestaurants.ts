@@ -3,7 +3,8 @@ import { RestaurantCardProps } from "@/types/restaurant";
 export const mockRestaurants: RestaurantCardProps[] = Array.from({ length: 200 }, (_, index) => {
   const id = (index + 1).toString();
   const cuisineTypes = ["Italian", "Mexican", "Chinese", "Indian", "Japanese", "Peruvian"];
-  const names = ["Sabor", "Delizia", "La Mesa", "Rincón", "Fusión", "Sazón", "Gusto", "Terraza"];
+  const names = ["Flavor", "Delight", "The Table", "Corner", "Fusion", "Spice", "Taste", "Terrace"];
+
   const descriptions = [
     "A place where flavor meets tradition.",
     "Delicious meals with a cozy vibe.",
