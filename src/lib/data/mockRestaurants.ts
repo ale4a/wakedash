@@ -20,6 +20,8 @@ export const mockRestaurants: RestaurantCardProps[] = Array.from({ length: 200 }
     imageUrl: `/cdn/restaurants/${(index % 13) + 1}.png`,
     description: descriptions[index % descriptions.length],
     cuisineType: cuisineTypes[index % cuisineTypes.length],
+    distance: Math.floor(Math.random() * 10) + 1,
+    deliveryTime: Math.floor(Math.random() * 30) + 20,
     isOpen: index % 3 !== 0,
   };
 });

@@ -6,5 +6,7 @@ export interface RestaurantCardProps {
     cuisineType?: string
     isOpen?: boolean
     index: number
+    distance?: number
+    deliveryTime?: number
   }
   

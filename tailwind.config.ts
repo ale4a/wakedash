@@ -17,7 +17,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#16161B",
+        background: "#1F1D2B",
         primary: "#3E73C4",
         secondary: "#B0B3C3",
         success: "#7FE0A2",
@@ -25,7 +25,7 @@ const config: Config = {
         danger: "#F76C6C",
         "text-primary": "#FFFFFF",
         "text-secondary": "#A1A1AA",
-        "gray-text": "#3D3D3D",
+        "gray-text": "#393C49",
         "interactive-1": "#0BA1F9",
         "interactive-2": "#F9CD2F",
         "interactive-3": "#FB832D",
