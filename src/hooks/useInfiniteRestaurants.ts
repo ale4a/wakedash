@@ -16,7 +16,7 @@ const fetchRestaurants = async ({ pageParam }: FetchRestaurantsParams): Promise<
   if (pageParam) params.set("cursor", pageParam);
   params.set("limit", "9");
 
-  const res = await fetch(`/api/v1/restaurants?${params.toString()}`);
+  const res = await fetch(`/api/restaurants?${params.toString()}`);
   if (!res.ok) throw new Error("Error fetching restaurants");
   return res.json();
 };

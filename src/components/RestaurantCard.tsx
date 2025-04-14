@@ -71,11 +71,11 @@ const RestaurantCard = ({
         <div className="flex items-center gap-4 my-2 ">
           <div className="flex items-center gap-1">
             <LuMapPin className="h-4 w-4" />
-            <span>1.2 miles</span>
+            <span>{distance} miles</span>
           </div>
           <div className="flex items-center gap-1">
             <CiClock2 className="h-4 w-4" />
-            <span>20-30 min</span>
+            <span>{deliveryTime}</span>
           </div>
         </div>
       </CardBody>

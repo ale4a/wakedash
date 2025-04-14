@@ -5,9 +5,10 @@ import { Button } from "@heroui/react";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteRestaurants } from "@/hooks/useInfiniteRestaurants";
-import NavbarComponent from "@/components/Navbar";
+import InfiniteScroll from "@/components/common/InfiniteScroll";
+import NavbarComponent from "@/components/common/Navbar";
 
-const Page = () => {
+const RestaurantsPage = () => {
   const { ref, inView } = useInView();
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
@@ -16,7 +17,7 @@ const Page = () => {
   useEffect(() => {
     if (inView && hasNextPage) fetchNextPage();
   }, [inView, hasNextPage, fetchNextPage]);
-
+  //
   const restaurants = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
@@ -28,28 +29,23 @@ const Page = () => {
             <Link
               key={restaurant.id}
               href={`/restaurants/${restaurant.id}`}
-              className="block w-full  p-2"
+              className="block w-full p-2"
             >
               <RestaurantCard {...restaurant} index={index} />
             </Link>
           ))}
         </div>
-        <div ref={ref} className="mt-8">
-          {isFetchingNextPage ? (
-            <p className="text-sm text-gray-500">Loading more restaurants...</p>
-          ) : hasNextPage ? (
-            <Button onPress={() => fetchNextPage()} color="primary">
-              Load More
-            </Button>
-          ) : (
-            <p className="text-sm text-gray-400">
-              No more restaurants to load.
-            </p>
-          )}
-        </div>
+
+        <InfiniteScroll
+          onLoadMore={() => fetchNextPage()}
+          isLoading={isFetchingNextPage}
+          hasMore={!!hasNextPage}
+          loadingText="Loading more restaurants..."
+          noMoreText="No more restaurants available"
+        />
       </div>
     </>
   );
 };
 
-export default Page;
+export default RestaurantsPage;
