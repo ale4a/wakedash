@@ -7,14 +7,7 @@ import Header from "@/components/Restaurant/Header";
 import DishGrid from "@/components/Restaurant/DishGrid";
 import Cart from "@/components/Restaurant/Cart";
 import InfiniteScroll from "@/components/common/InfiniteScroll";
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-} from "@heroui/react";
-import NavbarComponent from "@/components/common/Navbar";
+import { Modal, ModalContent } from "@heroui/react";
 
 const RestaurantPage = () => {
   const { restaurantId } = useParams();
@@ -45,8 +38,7 @@ const RestaurantPage = () => {
   const dishes = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
-    <div className="min-h-screen bg-background flex">
-      {/* <NavbarComponent /> */}
+    <div className="min-h-screen bg-background flex flex-col">
       <Header
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
@@ -54,7 +46,7 @@ const RestaurantPage = () => {
         cartItems={cartItems}
       />
 
-      <main className="flex gap-4 mx-auto px-4 sm:px-6 lg:px-8 pt-48 pb-24">
+      <main className="flex gap-4 mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 max-w-7xl">
         <div className="flex flex-col w-full lg:w-2/3">
           <DishGrid
             dishes={dishes}
@@ -85,7 +77,7 @@ const RestaurantPage = () => {
           </InfiniteScroll>
         </div>
 
-        <aside className="hidden lg:block w-1/3 h-[calc(100vh-12rem)] sticky top-48 overflow-y-auto">
+        <aside className="hidden lg:block w-1/3 h-[calc(100vh-12rem)] sticky top-24 overflow-y-auto">
           <Cart
             items={cartItems}
             onUpdateQuantity={updateQuantity}
@@ -99,15 +91,11 @@ const RestaurantPage = () => {
         className="bg-background"
       >
         <ModalContent>
-          <ModalHeader>Your Order</ModalHeader>
-          <ModalBody>
-            <Cart
-              items={cartItems}
-              onUpdateQuantity={updateQuantity}
-              onSendOrder={sendOrder}
-            />
-          </ModalBody>
-          <ModalFooter></ModalFooter>
+          <Cart
+            items={cartItems}
+            onUpdateQuantity={updateQuantity}
+            onSendOrder={sendOrder}
+          />
         </ModalContent>
       </Modal>
     </div>

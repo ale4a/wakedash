@@ -13,7 +13,6 @@ const RestaurantsPage = () => {
 
   return (
     <>
-      <NavbarComponent />
       <div className="flex flex-col items-center justify-center min-h-screen bg-background px-4 py-8">
         <RestaurantGrid restaurants={restaurants} />
 
