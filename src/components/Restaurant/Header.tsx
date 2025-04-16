@@ -21,7 +21,7 @@ const Header = ({
     .map((item) => item.quantity)
     .reduce((acc, item) => acc + item, 0);
   return (
-    <header className="fixed top-0 left-0 right-0 bg-gray-800 z-50 shadow-lg">
+    <header className="fixed top-0 left-0 right-0 bg-background z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-4">
           <div className="flex items-center justify-between mb-4">

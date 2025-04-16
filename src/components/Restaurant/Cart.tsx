@@ -15,7 +15,9 @@ const Cart = ({ items, onUpdateQuantity, onSendOrder }: CartProps) => {
 
   return (
     <div className="bg-gray-800 p-4 rounded-lg">
-      <h2 className="text-xl font-bold text-white mb-4">Your order</h2>
+      <h2 className="hidden lg:block text-xl font-bold text-white mb-4">
+        Your order
+      </h2>
       <div className="space-y-4">
         {items.map((item) => (
           <div key={item.id} className="flex items-center justify-between">
@@ -26,16 +28,16 @@ const Cart = ({ items, onUpdateQuantity, onSendOrder }: CartProps) => {
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-                className="p-1 rounded-full bg-gray-700 text-white"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white"
               >
                 -
               </button>
-              <span className="text-white w-8 text-center">
+              <span className="text-white w-6 text-center">
                 {item.quantity}
               </span>
               <button
                 onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-                className="p-1 rounded-full bg-gray-700 text-white"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700 text-white"
               >
                 +
               </button>

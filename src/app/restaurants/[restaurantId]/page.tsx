@@ -7,7 +7,14 @@ import Header from "@/components/Restaurant/Header";
 import DishGrid from "@/components/Restaurant/DishGrid";
 import Cart from "@/components/Restaurant/Cart";
 import InfiniteScroll from "@/components/common/InfiniteScroll";
-import { Modal, ModalBody, ModalContent, ModalHeader } from "@heroui/react";
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+} from "@heroui/react";
+import NavbarComponent from "@/components/common/Navbar";
 
 const RestaurantPage = () => {
   const { restaurantId } = useParams();
@@ -38,7 +45,8 @@ const RestaurantPage = () => {
   const dishes = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
-    <div className="min-h-screen bg-gray-900 flex">
+    <div className="min-h-screen bg-background flex">
+      {/* <NavbarComponent /> */}
       <Header
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
@@ -85,9 +93,13 @@ const RestaurantPage = () => {
           />
         </aside>
       </main>
-      <Modal isOpen={isCartOpen} onOpenChange={setIsCartOpen}>
+      <Modal
+        isOpen={isCartOpen}
+        onOpenChange={setIsCartOpen}
+        className="bg-background"
+      >
         <ModalContent>
-          <ModalHeader>Your Cart</ModalHeader>
+          <ModalHeader>Your Order</ModalHeader>
           <ModalBody>
             <Cart
               items={cartItems}
@@ -95,6 +107,7 @@ const RestaurantPage = () => {
               onSendOrder={sendOrder}
             />
           </ModalBody>
+          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </div>
